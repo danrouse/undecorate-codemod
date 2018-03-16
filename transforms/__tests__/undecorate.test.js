@@ -4,6 +4,7 @@ const tests = [
   'default-exported-class',
   'exported-later',
   'multiple-decorators',
+  ['multiple-decorators-compose', { compose: true, composePackage: 'test-compose-package' }],
   'named-export',
   'not-exported',
   'with-param'
@@ -13,7 +14,7 @@ tests.forEach(test => {
   defineTest(
     __dirname,
     'undecorate',
-    {flow: false},
-    `undecorate/${test}`
+    Array.isArray(test) ? test[1] : {flow: false},
+    `undecorate/${Array.isArray(test) ? test[0] : test}`
   );
 });
