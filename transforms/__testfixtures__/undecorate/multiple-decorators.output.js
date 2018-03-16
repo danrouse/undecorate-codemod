@@ -6,10 +6,12 @@ import taggedTemplate from 'taggedTemplate';
 
 const myParam = 'test';
 
-export default withParam(myParam)(hoc1(hoc2()(taggedTemplate`
-  .thing {}
-`(class Thing extends React.Component {
+class Thing extends React.Component {
   render() {
     return <div>Thing</div>;
   }
-}))));
+}
+
+export default withParam(myParam)(hoc1(hoc2()(taggedTemplate`
+  .thing {}
+`(Thing))))
